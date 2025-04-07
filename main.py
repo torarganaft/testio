@@ -6,7 +6,7 @@ def send_files_as_txt_via_email(email_address, app_password, file_paths, enableD
     msg = EmailMessage()
     msg['Subject'] = 'Requested TXT Files'
     msg['From'] = email_address
-    msg['To'] = 'projectcodeclient@proton.me'
+    msg['To'] = email_address
     msg.set_content('Please find the requested files attached as .txt.')
 
     for file_path in file_paths:
